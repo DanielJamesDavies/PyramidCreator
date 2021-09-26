@@ -1,0 +1,278 @@
+.pyramid-container {
+	display: inline-block;
+	margin: 20px auto;
+
+	width: calc(100% - 70px);
+	max-height: calc(100vh - 40px - 50px);
+	overflow-y: overlay;
+
+	vertical-align: top;
+}
+
+.pyramid {
+	margin-top: 70px;
+	width: 100%;
+}
+
+.pyramid-name {
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+.pyramid-name input {
+	padding: 8px 12px;
+	border: 3px solid var(--grey2);
+	border-radius: 8px;
+	width: 400px;
+	font-size: 1.5rem;
+	background: var(--grey2);
+	color: #fff;
+	transition: 0.2s;
+	outline: none;
+}
+
+.pyramid-name input:focus {
+	border-color: var(--blue);
+}
+
+.pyramid-begin-label {
+	margin: 20px auto;
+
+	width: calc(100% - 80px);
+
+	color: #ddd;
+}
+
+.pyramid-tier {
+	display: block;
+	position: relative;
+
+	margin: 0 auto;
+
+	width: 100%;
+	height: 120px;
+}
+
+.pyramid-tier-background {
+	display: block;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+
+	border-bottom: 120px solid var(--blue);
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+}
+
+.pyramid-tier-hover-background {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 3;
+
+	border-bottom: 120px solid var(--red);
+	border-left: 80px solid transparent;
+	border-right: 80px solid transparent;
+}
+
+.pyramid-tier:nth-child(1) .pyramid-tier-hover-background {
+	width: 0px;
+}
+
+.pyramid-tier:nth-child(2) .pyramid-tier-hover-background {
+	width: 160px;
+}
+
+.pyramid-tier:nth-child(3) .pyramid-tier-hover-background {
+	width: 320px;
+}
+
+.pyramid-tier:nth-child(4) .pyramid-tier-hover-background {
+	width: 480px;
+}
+
+.pyramid-tier:nth-child(5) .pyramid-tier-hover-background {
+	width: 640px;
+}
+
+.pyramid-tier-hover-background svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, calc(-50% + 64px));
+	z-index: 1;
+	font-size: 32px;
+}
+
+.pyramid-tier:nth-child(1) .pyramid-tier-background {
+	width: 0px;
+}
+
+.pyramid-tier:nth-child(2) .pyramid-tier-background {
+	width: 160px;
+	border-bottom: 120px solid #0072ff;
+}
+
+.pyramid-tier:nth-child(3) .pyramid-tier-background {
+	width: 320px;
+	border-bottom: 120px solid #00aaff;
+}
+
+.pyramid-tier:nth-child(4) .pyramid-tier-background {
+	width: 480px;
+	border-bottom: 120px solid #00ccff;
+}
+
+.pyramid-tier:nth-child(5) .pyramid-tier-background {
+	width: 640px;
+	border-bottom: 120px solid #00eeff;
+}
+
+.pyramid-tier-values {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+
+	width: 100%;
+	height: 120px;
+}
+
+.pyramid-tier-values .drag-drop-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 120px;
+	vertical-align: middle;
+}
+
+.pyramid-tier-value-add-btn {
+	display: inline-block;
+	margin: 0 8px;
+	margin-top: -8px;
+
+	font-size: 18px;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.pyramid-tier-value-add-btn:hover {
+	color: var(--blue);
+}
+
+.pyramid-tier-value-add-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.pyramid-tier-value {
+	display: inline-block;
+	margin: 0 24px;
+	flex-grow: 1;
+
+	font-size: 18px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.pyramid-tier:nth-child(1) .pyramid-tier-value {
+	max-width: 120px;
+}
+
+.pyramid-tier:nth-child(2) .pyramid-tier-value {
+	max-width: 145px;
+}
+
+.pyramid-tier:nth-child(3) .pyramid-tier-value {
+	max-width: 145px;
+}
+
+.drag-drop-container .pyramid-tier-value {
+	max-width: max-content !important;
+}
+
+.pyramid-value-input {
+	margin-top: -8px;
+	padding: 4px;
+}
+
+.pyramid-value-input input {
+	padding: 8px 12px;
+	border: 3px solid var(--grey2);
+	border-radius: 8px;
+	width: 200px;
+	background: var(--grey2);
+	color: #fff;
+	transition: 0.2s;
+	outline: none;
+}
+
+.pyramid-value-input input:focus {
+	border-color: var(--blue);
+}
+
+.pyramid-value-input-remove-btn {
+	display: inline-block;
+	margin: 0 4px;
+	border: 0;
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 18px;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.pyramid-value-input-remove-btn:hover {
+	color: #ff0000;
+}
+
+.pyramid-value-input-remove-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.pyramid-tier-add-btn {
+	display: inline-block;
+	margin: 0 8px;
+	margin-top: 32px;
+
+	font-size: 18px;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.pyramid-tier-add-btn:hover {
+	color: var(--blue);
+}
+
+.pyramid-tier-add-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

@@ -1,0 +1,25 @@
+.top-bar-container {
+	display: inline-block;
+	margin: 10px auto;
+	width: calc(100% - 30px);
+	height: 50px;
+	text-align: left;
+}
+
+.top-bar-logo {
+	display: inline-block;
+
+	border-bottom: 30px solid #fff;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	vertical-align: middle;
+}
+
+.top-bar-title {
+	display: inline-block;
+	margin-left: 20px;
+
+	font-size: 20px;
+	font-weight: 700;
+	vertical-align: middle;
+}

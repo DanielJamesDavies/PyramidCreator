@@ -1,0 +1,88 @@
+.sidebar-container {
+	display: inline-block;
+	margin-top: 25px;
+	width: 70px;
+	vertical-align: top;
+}
+
+.sidebar-change-pyramid-input {
+	display: none;
+}
+
+.sidebar-btn-container {
+	position: relative;
+}
+
+.sidebar-btn {
+	display: inline-block;
+	margin: 12px 4px;
+	border: 0;
+	border-radius: 100%;
+
+	width: 42px;
+	height: 42px;
+
+	background: transparent;
+	color: #fff;
+
+	font-size: 20px;
+	transition: 0.1s;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.sidebar-btn:hover {
+	background: var(--grey2);
+}
+
+.sidebar-btn svg {
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.sidebar-btn-edit svg {
+	margin-top: -2px;
+	margin-left: 6px;
+}
+
+.sidebar-btn-view svg {
+	margin-top: -2px;
+}
+
+.sidebar-btn-export svg {
+	margin-left: 6px;
+}
+
+.sidebar-btn-label {
+	display: inline-block;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 65px;
+	transform: translateY(-50%);
+	z-index: -1;
+
+	margin: 0;
+	padding: 10px 16px;
+	border-radius: 8px;
+
+	width: 64px;
+
+	background: var(--grey2);
+	font-weight: 700;
+	text-align: left;
+	transition: 0.1s;
+}
+
+.sidebar-btn:hover + .sidebar-btn-label {
+	opacity: 1;
+	z-index: 1;
+}
+
+.sidebar-btn-label:hover {
+	opacity: 1;
+	z-index: 1;
+}
