@@ -72,9 +72,11 @@ export const Pyramid = () => {
 										</DragDropItem>
 									))}
 								</DragDropContainer>
-								<div className='pyramid-tier-value-add-btn' onClick={(e) => addValue(e, tierIndex)}>
-									<FaPlus />
-								</div>
+								{tier.length >= 9 ? null : (
+									<div className='pyramid-tier-value-add-btn' onClick={(e) => addValue(e, tierIndex)}>
+										<FaPlus />
+									</div>
+								)}
 							</div>
 						) : (
 							<div className='pyramid-tier-hover-background'>

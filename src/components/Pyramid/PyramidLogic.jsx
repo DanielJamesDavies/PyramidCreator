@@ -71,6 +71,7 @@ export const PyramidLogic = () => {
 	function addValue(e, tier) {
 		e.stopPropagation();
 		setPyramid((oldPyramid) => {
+			if (oldPyramid.tiers[tier].length >= 9) return oldPyramid;
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
 			newPyramid.tiers[tier].push("");
 			return newPyramid;
