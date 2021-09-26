@@ -52,7 +52,11 @@ export const SidebarLogic = () => {
 
 	function savePyramid() {
 		downloadPyramidBtnRef.current.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pyramid)));
-		downloadPyramidBtnRef.current.setAttribute("download", pyramid.name !== "" ? pyramid.name + ".json" : "pyramid" + ".json");
+		if (pyramid.name !== "") {
+			downloadPyramidBtnRef.current.setAttribute("download", pyramid.name + ".json");
+		} else {
+			downloadPyramidBtnRef.current.setAttribute("download", "pyramid.json");
+		}
 		downloadPyramidBtnRef.current.click();
 		savePyramidBtn.current.blur();
 	}
