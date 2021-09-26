@@ -13,16 +13,24 @@ import { PyramidContext } from "../../context/PyramidContext";
 // Assets
 
 export const SidebarLogic = () => {
+	const { pyramid, setPyramid, isEditing, setIsEditing } = useContext(PyramidContext);
 	const changePyramidInputRef = useRef();
 	const downloadPyramidBtnRef = useRef();
-	const { pyramid, setPyramid, isEditing, setIsEditing } = useContext(PyramidContext);
+
+	const openPyramidBtn = useRef();
+	const editViewPyramidBtn = useRef();
+	const savePyramidBtn = useRef();
 
 	function changePyramid(e) {
 		if (e.target.files.length === 0) return false;
 		const fr = new FileReader();
 		fr.readAsText(e.target.files[0]);
 		fr.onload = () => {
-			setPyramid(JSON.parse(fr.result));
+			var pyramidFile = JSON.parse(fr.result);
+			var newPyramid = { name: "", tiers: [] };
+			if (pyramidFile.name !== undefined) newPyramid.name = pyramidFile.name;
+			if (pyramidFile.tiers !== undefined) newPyramid.tiers = pyramidFile.tiers;
+			setPyramid(newPyramid);
 			changePyramidInputRef.current.value = [];
 		};
 		fr.onerror = (error) => {
@@ -30,17 +38,35 @@ export const SidebarLogic = () => {
 		};
 	}
 
+	function openPyramid() {
+		changePyramidInputRef.current.click();
+		openPyramidBtn.current.blur();
+	}
+
 	function toggleIsEditing() {
 		setIsEditing((oldIsEditing) => {
 			return !oldIsEditing;
 		});
+		editViewPyramidBtn.current.blur();
 	}
 
 	function savePyramid() {
 		downloadPyramidBtnRef.current.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pyramid)));
-		downloadPyramidBtnRef.current.setAttribute("download", pyramid.name + ".json");
+		downloadPyramidBtnRef.current.setAttribute("download", pyramid.name !== "" ? pyramid.name + ".json" : "pyramid" + ".json");
 		downloadPyramidBtnRef.current.click();
+		savePyramidBtn.current.blur();
 	}
 
-	return { changePyramidInputRef, downloadPyramidBtnRef, changePyramid, isEditing, toggleIsEditing, savePyramid };
+	return {
+		changePyramidInputRef,
+		downloadPyramidBtnRef,
+		openPyramidBtn,
+		editViewPyramidBtn,
+		savePyramidBtn,
+		changePyramid,
+		isEditing,
+		openPyramid,
+		toggleIsEditing,
+		savePyramid,
+	};
 };
