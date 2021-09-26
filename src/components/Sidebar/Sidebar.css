@@ -48,12 +48,12 @@
 	margin-left: 6px;
 }
 
-.sidebar-btn-view svg {
-	margin-top: -2px;
+.sidebar-btn-open svg {
+	margin-left: 6px;
 }
 
-.sidebar-btn-export svg {
-	margin-left: 6px;
+.sidebar-btn-view svg {
+	margin-top: -2px;
 }
 
 .sidebar-btn-label {

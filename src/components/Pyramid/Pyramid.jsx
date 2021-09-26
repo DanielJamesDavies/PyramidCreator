@@ -31,7 +31,7 @@ export const Pyramid = () => {
 						<>
 							<p className='pyramid-begin-label'>To begin creating a pyramid hierarchy, press the "Edit" button on the sidebar.</p>
 							<p className='pyramid-begin-label'>
-								Alternatively, to import a pyramid hierarchy, press the "Import" button on the sidebar.
+								Alternatively, to open a pyramid hierarchy, press the "Open" button on the sidebar.
 							</p>
 						</>
 					)}

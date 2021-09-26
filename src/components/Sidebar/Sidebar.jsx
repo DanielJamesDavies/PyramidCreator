@@ -1,5 +1,5 @@
 // Packages
-import { FaFileImport, FaEdit, FaMountain, FaFileExport } from "react-icons/fa";
+import { FaEdit, FaMountain, FaFolderOpen, FaSave } from "react-icons/fa";
 
 // Components
 
@@ -20,10 +20,10 @@ export const Sidebar = () => {
 		<div className='sidebar-container'>
 			<input className='sidebar-change-pyramid-input' ref={changePyramidInputRef} type='file' onChange={changePyramid} />
 			<div className='sidebar-btn-container'>
-				<button className='sidebar-btn sidebar-btn-import' onClick={() => changePyramidInputRef.current.click()}>
-					<FaFileImport />
+				<button className='sidebar-btn sidebar-btn-open' onClick={() => changePyramidInputRef.current.click()}>
+					<FaFolderOpen />
 				</button>
-				<div className='sidebar-btn-label'>Import</div>
+				<div className='sidebar-btn-label'>Open</div>
 			</div>
 
 			<div className='sidebar-btn-container'>
@@ -37,10 +37,10 @@ export const Sidebar = () => {
 				<a ref={downloadPyramidBtnRef} style={{ display: "none" }} href='/'>
 					Download
 				</a>
-				<button className='sidebar-btn sidebar-btn-export' onClick={savePyramid}>
-					<FaFileExport />
+				<button className='sidebar-btn sidebar-btn-save' onClick={savePyramid}>
+					<FaSave />
 				</button>
-				<div className='sidebar-btn-label'>Export</div>
+				<div className='sidebar-btn-label'>Save</div>
 			</div>
 		</div>
 	);
