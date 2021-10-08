@@ -1,17 +1,59 @@
 .pyramid-container {
 	display: inline-block;
-	margin: 20px auto;
+	margin: 0 auto;
 
-	width: calc(100% - 70px);
-	max-height: calc(100vh - 40px - 50px);
+	width: calc(100%);
+	max-height: calc(100vh - 40px - 70px);
 	overflow-y: overlay;
 
 	vertical-align: top;
+
+	animation: pyramid-container-show 1 0.8s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes pyramid-container-show {
+	0% {
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		left: -100vw;
+	}
+	99% {
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		left: 0px;
+	}
+	100% {
+		position: relative;
+	}
+}
+
+.pyramid-container-hide {
+	position: absolute;
+	top: 0px;
+	z-index: 2;
+	height: calc(100vh - 40px - 50px);
+	overflow-y: visible;
+
+	animation: pyramid-container-hide 1 0.8s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes pyramid-container-hide {
+	0% {
+		left: 0px;
+	}
+	100% {
+		left: -100vw;
+	}
 }
 
 .pyramid {
 	margin-top: 70px;
 	width: 100%;
+	overflow-y: hidden;
 }
 
 .pyramid-name {
@@ -192,8 +234,10 @@
 }
 
 .pyramid-tier-value {
+	position: relative;
 	display: inline-block;
 	margin: 0 24px;
+	padding: 12px 0;
 	flex-grow: 1;
 	max-width: 145px;
 
@@ -208,6 +252,47 @@
 
 .drag-drop-container .pyramid-tier-value {
 	max-width: max-content !important;
+}
+
+.pyramid-tier-value-notes-btn {
+	position: absolute;
+	bottom: -22px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: none;
+	margin: 0 4px;
+	border: 0;
+	border-radius: 100%;
+
+	width: 30px;
+	height: 30px;
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 18px;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.pyramid-tier-value-notes-btn:hover {
+	display: inline-block;
+	background: var(--blue);
+	color: #fff;
+}
+
+.pyramid-tier-value:hover .pyramid-tier-value-notes-btn {
+	display: inline-block;
+}
+
+.pyramid-tier-value-notes-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .pyramid-value-input {
@@ -230,7 +315,8 @@
 	border-color: var(--blue);
 }
 
-.pyramid-value-input-remove-btn {
+.pyramid-value-input-remove-btn,
+.pyramid-value-input-notes-btn {
 	display: inline-block;
 	margin: 0 4px;
 	border: 0;
@@ -247,7 +333,12 @@
 	color: #ff0000;
 }
 
-.pyramid-value-input-remove-btn svg {
+.pyramid-value-input-notes-btn:hover {
+	color: var(--blue);
+}
+
+.pyramid-value-input-remove-btn svg,
+.pyramid-value-input-notes-btn svg {
 	margin: auto;
 	width: 100%;
 	display: flex;

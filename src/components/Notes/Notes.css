@@ -1,0 +1,248 @@
+.notes-container {
+	display: inline-block;
+	margin: 0 auto;
+
+	width: calc(100%);
+	height: calc(100vh - 40px - 70px);
+	overflow-y: overlay;
+
+	vertical-align: top;
+
+	animation: notes-container-show 1 0.8s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes notes-container-show {
+	0% {
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		left: 100vw;
+	}
+	99% {
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		left: 0px;
+	}
+	100% {
+		position: relative;
+	}
+}
+
+.notes-container-hide {
+	position: absolute;
+	top: 0px;
+	z-index: 2;
+	height: calc(100vh - 40px - 50px);
+	overflow-y: visible;
+
+	animation: notes-container-hide 1 0.8s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes notes-container-hide {
+	0% {
+		left: 0px;
+	}
+	100% {
+		left: 100vw;
+	}
+}
+
+.notes-top-bar {
+	margin: 0 auto;
+
+	width: calc(100% - 40px);
+	max-width: 800px;
+}
+
+.notes-top-bar-back-btn {
+	display: inline-block;
+	margin: 0 4px;
+	border: 0;
+	border-radius: 100%;
+
+	width: 40px;
+	height: 40px;
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 1.5rem;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.notes-top-bar-back-btn:hover {
+	background: var(--blue);
+	color: #fff;
+}
+
+.notes-top-bar-back-btn svg {
+	margin: auto;
+	margin-left: -1px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.notes-top-bar-title {
+	display: inline-block;
+	margin-left: 18px;
+
+	width: calc(100% - 18px - 48px);
+
+	font-size: 1.5rem;
+	vertical-align: middle;
+}
+
+.notes {
+	margin: 0 auto;
+	margin-top: 40px;
+
+	width: calc(100% - 40px);
+	max-width: 800px;
+}
+
+.note {
+	margin: 10px auto;
+	padding: 12px 24px;
+	border-radius: 4px;
+
+	width: calc(100% - 40px);
+	text-align: left;
+
+	background: var(--grey2);
+}
+
+.note-title {
+	display: inline-block;
+	margin-top: 1rem;
+
+	width: calc(100% - 38px - 8px);
+
+	font-size: 1.4rem;
+}
+
+.note-text p {
+	margin: 1rem 0;
+	font-size: 1rem;
+}
+
+.note-title input {
+	display: inline-block;
+	padding: 8px 12px;
+	border: 3px solid var(--grey1);
+	border-radius: 8px;
+
+	width: calc(100% - 24px - 6px);
+
+	background: var(--grey1);
+	color: #fff;
+	transition: 0.2s;
+	outline: none;
+}
+
+.note-title input:focus {
+	border-color: var(--blue);
+}
+
+.note-remove-btn {
+	display: inline-block;
+	margin: 0 4px;
+	margin-left: 12px;
+	border: 0;
+	border-radius: 100%;
+
+	width: 30px;
+	height: 30px;
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 1.3rem;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.note-remove-btn:hover {
+	background: var(--red);
+	color: #fff;
+}
+
+.note-remove-btn svg {
+	margin: auto;
+	margin-top: 1px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.note-text textarea {
+	margin-top: 12px;
+	padding: 8px 12px;
+	border: 3px solid var(--grey1);
+	border-radius: 8px;
+
+	width: calc(100% - 24px - 6px);
+
+	background: var(--grey1);
+	color: #fff;
+	transition: 0.2s;
+	outline: none;
+}
+
+.note-text textarea:focus {
+	border-color: var(--blue);
+}
+
+.note-add-btn {
+	display: inline-block;
+	margin: 0 4px;
+	margin-left: 12px;
+	margin-bottom: 50px;
+	border: 0;
+	border-radius: 100%;
+
+	width: 32px;
+	height: 32px;
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 1.3rem;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.note-add-btn:hover {
+	background: var(--blue);
+	color: #fff;
+}
+
+.note-add-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.notes-begin-label {
+	margin: 0 auto;
+	margin-top: 40px;
+
+	width: calc(100% - 100px);
+	max-width: calc(800px - 100px);
+
+	color: #ddd;
+}

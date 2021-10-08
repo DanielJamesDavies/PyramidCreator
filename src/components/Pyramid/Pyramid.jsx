@@ -1,5 +1,5 @@
 // Packages
-import { FaPlus, FaTrash } from "react-icons/fa";
+import { FaPlus, FaTrash, FaStickyNote } from "react-icons/fa";
 
 // Components
 import { DragDropContainer } from "../DragDropContainer/DragDropContainer";
@@ -17,14 +17,26 @@ import { PyramidValueInput } from "./PyramidValueInput";
 // Assets
 
 export const Pyramid = () => {
-	const { pyramid, isEditing, tierSelected, changeName, onTierClick, changeValue, removeValue, onDropPyramidValueItem, addValue, addTier } =
-		PyramidLogic();
+	const {
+		pyramid,
+		isEditing,
+		selectedElement,
+		tierSelected,
+		changeName,
+		onTierClick,
+		changeValue,
+		selectElement,
+		removeElement,
+		onDropPyramidValueItem,
+		addValue,
+		addTier,
+	} = PyramidLogic();
 
 	if (!pyramid) return <div className='pyramid-container'></div>;
 
 	if (!isEditing)
 		return (
-			<div className='pyramid-container'>
+			<div className={!selectedElement ? "pyramid-container" : "pyramid-container pyramid-container-hide"}>
 				<div className='pyramid-name'>{pyramid.name}</div>
 				<div className='pyramid'>
 					{pyramid.tiers.length !== 0 ? null : (
@@ -35,12 +47,15 @@ export const Pyramid = () => {
 							</p>
 						</>
 					)}
-					{pyramid.tiers.map((tier, index) => (
-						<div key={index} className='pyramid-tier'>
+					{pyramid.tiers.map((tier, tierIndex) => (
+						<div key={tierIndex} className='pyramid-tier'>
 							<div className='pyramid-tier-values'>
-								{tier.map((value, index) => (
-									<div key={index} className='pyramid-tier-value'>
-										{value}
+								{tier.map((element, valueIndex) => (
+									<div key={valueIndex} className='pyramid-tier-value'>
+										{element.value}
+										<button className='pyramid-tier-value-notes-btn' onClick={(e) => selectElement(e, tierIndex, valueIndex)}>
+											<FaStickyNote />
+										</button>
 									</div>
 								))}
 							</div>
@@ -52,7 +67,7 @@ export const Pyramid = () => {
 		);
 
 	return (
-		<div className='pyramid-container'>
+		<div className={!selectedElement ? "pyramid-container" : "pyramid-container pyramid-container-hide"}>
 			<div className='pyramid-name'>
 				<input value={pyramid.name} onChange={changeName} placeholder='Name' />
 			</div>
@@ -62,12 +77,13 @@ export const Pyramid = () => {
 						{tierSelected !== tierIndex ? (
 							<div className='pyramid-tier-values'>
 								<DragDropContainer itemsAreInline={false} onDropItem={(res) => onDropPyramidValueItem(res, tierIndex)}>
-									{tier.map((value, valueIndex) => (
+									{tier.map((element, valueIndex) => (
 										<DragDropItem key={valueIndex} index={valueIndex} className='pyramid-tier-value'>
 											<PyramidValueInput
-												value={value}
+												value={element.value}
 												onChange={(e) => changeValue(e, tierIndex, valueIndex)}
-												onRemove={(e) => removeValue(e, tierIndex, valueIndex)}
+												onNotes={(e) => selectElement(e, tierIndex, valueIndex)}
+												onRemove={(e) => removeElement(e, tierIndex, valueIndex)}
 											/>
 										</DragDropItem>
 									))}

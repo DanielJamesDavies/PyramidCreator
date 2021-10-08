@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 
 // Context
 import { PyramidContext } from "../../context/PyramidContext";
+import { ElementContext } from "../../context/ElementContext";
 
 // Styles
 
@@ -14,6 +15,7 @@ import { PyramidContext } from "../../context/PyramidContext";
 
 export const PyramidLogic = () => {
 	const { pyramid, setPyramid, isEditing } = useContext(PyramidContext);
+	const { selectedElement, changeSelectedElement } = useContext(ElementContext);
 	const [tierSelected, setTierSelected] = useState(-1);
 
 	function changeName(e) {
@@ -45,12 +47,17 @@ export const PyramidLogic = () => {
 	function changeValue(e, tier, index) {
 		setPyramid((oldPyramid) => {
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
-			newPyramid.tiers[tier][index] = e.target.value;
+			newPyramid.tiers[tier][index].value = e.target.value;
 			return newPyramid;
 		});
 	}
 
-	function removeValue(e, tier, index) {
+	function selectElement(e, tier, index) {
+		e.stopPropagation();
+		changeSelectedElement(pyramid.tiers[tier][index], tier, index);
+	}
+
+	function removeElement(e, tier, index) {
 		e.stopPropagation();
 		setPyramid((oldPyramid) => {
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
@@ -73,7 +80,7 @@ export const PyramidLogic = () => {
 		setPyramid((oldPyramid) => {
 			if (oldPyramid.tiers[tier].length >= 9) return oldPyramid;
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
-			newPyramid.tiers[tier].push("");
+			newPyramid.tiers[tier].push({ value: "", notes: [] });
 			return newPyramid;
 		});
 	}
@@ -91,11 +98,13 @@ export const PyramidLogic = () => {
 	return {
 		pyramid,
 		isEditing,
+		selectedElement,
 		tierSelected,
 		changeName,
 		onTierClick,
 		changeValue,
-		removeValue,
+		selectElement,
+		removeElement,
 		onDropPyramidValueItem,
 		addValue,
 		addTier,

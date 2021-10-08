@@ -10,6 +10,7 @@ import App from "./App";
 
 // Context
 import PyramidProvider from "./context/PyramidContext";
+import ElementProvider from "./context/ElementContext";
 
 // Styles
 
@@ -17,7 +18,9 @@ import PyramidProvider from "./context/PyramidContext";
 
 ReactDOM.render(
 	<PyramidProvider>
-		<App />
+		<ElementProvider>
+			<App />
+		</ElementProvider>
 	</PyramidProvider>,
 	document.getElementById("root")
 );

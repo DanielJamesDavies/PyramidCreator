@@ -4,6 +4,7 @@
 import { TopBar } from "./components/TopBar/TopBar";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Pyramid } from "./components/Pyramid/Pyramid";
+import { Notes } from "./components/Notes/Notes";
 
 // Logic
 
@@ -19,7 +20,10 @@ function App() {
 		<div className='App'>
 			<TopBar />
 			<Sidebar />
-			<Pyramid />
+			<div className='content-container'>
+				<Pyramid />
+				<Notes />
+			</div>
 		</div>
 	);
 }

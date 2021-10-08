@@ -21,3 +21,16 @@ body {
 	background: var(--grey1);
 	color: #fff;
 }
+
+.content-container {
+	position: relative;
+	display: inline-block;
+	margin: 20px auto;
+
+	width: calc(100% - 70px);
+	height: calc(100vh - 40px - 70px);
+	overflow-y: overlay;
+	overflow-x: hidden;
+
+	vertical-align: top;
+}
