@@ -80,7 +80,7 @@ export const Notes = () => {
 				<DragDropContainer className='notes' itemsAreInline={false} onDropItem={onDropNote}>
 					{selectedElement.notes.map((note, index) => (
 						<DragDropItem key={index} index={index} className='note'>
-							<div className='note-title'>
+							<div className='note-title prevent-drag'>
 								<input value={note.title} onChange={(e) => changeTitle(e, index)} placeholder='Title' />
 							</div>
 
@@ -88,7 +88,7 @@ export const Notes = () => {
 								<FaTimes />
 							</button>
 
-							<div className='note-text'>
+							<div className='note-text prevent-drag'>
 								<textarea value={note.text.join("\n")} onChange={(e) => changeText(e, index)} placeholder='Text' />
 							</div>
 						</DragDropItem>
@@ -123,7 +123,7 @@ export const Notes = () => {
 				<div className='notes'>
 					{previousSelectedElement.notes.map((note, index) => (
 						<div key={index} className='note'>
-							<div className='note-title'>{note.title}</div>
+							{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
 							<div className='note-text'>
 								{note.text.map((paragraph, index) => (
 									<p key={index}>{paragraph}</p>
@@ -156,7 +156,7 @@ export const Notes = () => {
 			<div className='notes'>
 				{selectedElement.notes.map((note, index) => (
 					<div key={index} className='note'>
-						<div className='note-title'>{note.title}</div>
+						{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
 						<div className='note-text'>
 							{note.text.map((paragraph, index) => (
 								<p key={index}>{paragraph}</p>

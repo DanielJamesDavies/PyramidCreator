@@ -143,6 +143,9 @@
 
 	background: var(--grey1);
 	color: #fff;
+	font-family: sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	transition: 0.2s;
 	outline: none;
 }
@@ -191,10 +194,17 @@
 	border: 3px solid var(--grey1);
 	border-radius: 8px;
 
+	min-width: calc(100% - 24px - 6px);
 	width: calc(100% - 24px - 6px);
+	max-width: calc(100% - 24px - 6px);
+	min-height: 1rem;
+	resize: vertical;
 
 	background: var(--grey1);
 	color: #fff;
+	font-family: sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	transition: 0.2s;
 	outline: none;
 }
