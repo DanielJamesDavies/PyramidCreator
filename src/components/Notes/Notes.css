@@ -34,8 +34,8 @@
 	position: absolute;
 	top: 0px;
 	z-index: 2;
-	height: calc(100vh - 40px - 50px);
-	overflow-y: visible;
+	height: calc(100vh - 40px - 70px);
+	overflow-y: hidden;
 
 	animation: notes-container-hide 1 0.8s;
 	animation-fill-mode: forwards;
