@@ -37,7 +37,7 @@ export const NotesLogic = () => {
 	function changeText(e, noteIndex) {
 		setSelectedElement((oldSelectedElement) => {
 			var newSelectedElement = JSON.parse(JSON.stringify(oldSelectedElement));
-			newSelectedElement.notes[noteIndex].text = e.target.value.split("/n");
+			newSelectedElement.notes[noteIndex].text = e.target.value.split("\n");
 			return newSelectedElement;
 		});
 		setPyramid((oldPyramid) => {
