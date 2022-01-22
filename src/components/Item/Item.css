@@ -36,6 +36,16 @@
 	}
 }
 
+.item-container::-webkit-scrollbar {
+	width: 6px;
+	background: var(--grey3);
+}
+
+.item-container::-webkit-scrollbar-thumb {
+	background: var(--grey5);
+	border-radius: 5px;
+}
+
 .item-container-hide {
 	position: absolute;
 	top: 0px;
@@ -113,6 +123,7 @@
 .notes {
 	margin: 0 auto;
 	margin-top: 24px;
+	width: 100%;
 }
 
 .note {
@@ -208,7 +219,7 @@
 	min-width: calc(100% - 24px - 6px);
 	width: calc(100% - 24px - 6px);
 	max-width: calc(100% - 24px - 6px);
-	min-height: 1rem;
+	min-height: calc(15px * 3);
 	resize: vertical;
 
 	background: var(--grey2);
@@ -218,6 +229,20 @@
 	-moz-osx-font-smoothing: grayscale;
 	transition: 0.2s;
 	outline: none;
+}
+
+.note-text textarea::-webkit-scrollbar {
+	width: 8px;
+	background: var(--grey3);
+}
+
+.note-text textarea::-webkit-scrollbar-thumb {
+	background: var(--grey5);
+	border-radius: 5px;
+}
+
+.note-text textarea::-webkit-scrollbar-corner {
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .note-text textarea:focus {

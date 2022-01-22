@@ -49,7 +49,7 @@ export const Item = () => {
 							</button>
 
 							<div className='note-text'>
-								<textarea value={note.text.join("\n")} onChange={() => {}} placeholder='Text' />
+								<textarea value={note.text.join("\n")} onChange={() => {}} placeholder='Type a description for this item here.' />
 							</div>
 						</div>
 					))}
@@ -91,7 +91,11 @@ export const Item = () => {
 							</button>
 
 							<div className='note-text prevent-drag'>
-								<textarea value={note.text.join("\n")} onChange={(e) => changeText(e, index)} placeholder='Text' />
+								<textarea
+									value={note.text.join("\n")}
+									onChange={(e) => changeText(e, index)}
+									placeholder='Type a description for this item here.'
+								/>
 							</div>
 						</DragDropItem>
 					))}
@@ -128,11 +132,13 @@ export const Item = () => {
 					{previousSelectedItem.notes.map((note, index) => (
 						<div key={index} className='note'>
 							{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
-							<div className='note-text'>
-								{note.text.map((paragraph, index) => (
-									<p key={index}>{paragraph}</p>
-								))}
-							</div>
+							{note.text.join("").split(" ").join("") === "" ? null : (
+								<div className='note-text'>
+									{note.text.map((paragraph, index) => (
+										<p key={index}>{paragraph}</p>
+									))}
+								</div>
+							)}
 						</div>
 					))}
 				</div>
@@ -161,11 +167,13 @@ export const Item = () => {
 				{selectedItem.notes.map((note, index) => (
 					<div key={index} className='note'>
 						{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
-						<div className='note-text'>
-							{note.text.map((paragraph, index) => (
-								<p key={index}>{paragraph}</p>
-							))}
-						</div>
+						{note.text.join("").split(" ").join("") === "" ? null : (
+							<div className='note-text'>
+								{note.text.map((paragraph, index) => (
+									<p key={index}>{paragraph}</p>
+								))}
+							</div>
+						)}
 					</div>
 				))}
 			</div>
