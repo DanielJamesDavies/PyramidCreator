@@ -1,5 +1,5 @@
 // Packages
-import { FaPlus, FaTrash, FaStickyNote } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 // Components
 import { DragDropContainer } from "../DragDropContainer/DragDropContainer";
