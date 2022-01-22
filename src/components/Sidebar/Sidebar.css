@@ -24,6 +24,7 @@
 	height: 42px;
 
 	background: transparent;
+	background: var(--grey2);
 	color: #fff;
 
 	font-size: 20px;

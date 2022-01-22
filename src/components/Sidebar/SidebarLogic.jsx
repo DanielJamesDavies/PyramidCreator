@@ -7,7 +7,7 @@ import { useRef, useContext } from "react";
 
 // Context
 import { PyramidContext } from "../../context/PyramidContext";
-import { ElementContext } from "../../context/ElementContext";
+import { ItemContext } from "../../context/ItemContext";
 
 // Styles
 
@@ -15,7 +15,7 @@ import { ElementContext } from "../../context/ElementContext";
 
 export const SidebarLogic = () => {
 	const { pyramid, setPyramid, isEditing, setIsEditing } = useContext(PyramidContext);
-	const { changeSelectedElement } = useContext(ElementContext);
+	const { changeSelectedItem } = useContext(ItemContext);
 	const changePyramidInputRef = useRef();
 	const downloadPyramidBtnRef = useRef();
 
@@ -33,7 +33,7 @@ export const SidebarLogic = () => {
 			if (pyramidFile.name !== undefined) newPyramid.name = pyramidFile.name;
 			if (pyramidFile.tiers !== undefined) newPyramid.tiers = pyramidFile.tiers;
 			setPyramid(newPyramid);
-			changeSelectedElement(false);
+			changeSelectedItem(false);
 			changePyramidInputRef.current.value = [];
 		};
 		fr.onerror = (error) => {

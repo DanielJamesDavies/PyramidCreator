@@ -1,44 +1,44 @@
 // Packages
-import { FaChevronLeft, FaPlus, FaTimes } from "react-icons/fa";
+import { FaChevronRight, FaPlus, FaTimes } from "react-icons/fa";
 
 // Components
 import { DragDropContainer } from "../DragDropContainer/DragDropContainer";
 import { DragDropItem } from "../DragDropItem/DragDropItem";
 
 // Logic
-import { NotesLogic } from "./NotesLogic";
+import { ItemLogic } from "./ItemLogic";
 
 // Context
 
 // Styles
-import "./Notes.css";
+import "./Item.css";
 
 // Assets
 
-export const Notes = () => {
-	const { selectedElement, previousSelectedElement, isEditing, closeSelectedElement, changeTitle, changeText, removeNote, onDropNote, addNote } =
-		NotesLogic();
+export const Item = () => {
+	const { selectedItem, previousSelectedItem, isEditing, closeSelectedItem, changeTitle, changeText, removeNote, onDropNote, addNote } =
+		ItemLogic();
 
-	if (!selectedElement && !previousSelectedElement) return null;
+	if (!selectedItem && !previousSelectedItem) return null;
 
-	if (isEditing && !selectedElement && previousSelectedElement)
+	if (isEditing && !selectedItem && previousSelectedItem)
 		return (
-			<div className='notes-container notes-container-hide'>
-				<div className='notes-top-bar'>
-					<button className='notes-top-bar-back-btn' onClick={() => {}}>
-						<FaChevronLeft />
+			<div className='item-container item-container-editing item-container-hide'>
+				<div className='item-top-bar'>
+					<button className='item-top-bar-back-btn' onClick={() => {}}>
+						<FaChevronRight />
 					</button>
-					<div className='notes-top-bar-title'>{previousSelectedElement.value}</div>
+					<div className='item-top-bar-title'>{previousSelectedItem.value}</div>
 				</div>
 
-				{previousSelectedElement.notes.length !== 0 ? null : (
+				{previousSelectedItem.notes.length !== 0 ? null : (
 					<>
-						<p className='notes-begin-label'>To add notes to this element, press the "Add Note" button below.</p>
+						<p className='item-begin-label'>To add notes to this element, press the "Add Note" button below.</p>
 					</>
 				)}
 
 				<div className='notes'>
-					{previousSelectedElement.notes.map((note, index) => (
+					{previousSelectedItem.notes.map((note, index) => (
 						<div key={index} className='note'>
 							<div className='note-title'>
 								<input value={note.title} onChange={() => {}} placeholder='Title' />
@@ -55,30 +55,32 @@ export const Notes = () => {
 					))}
 				</div>
 
-				<button className='note-add-btn' onClick={addNote}>
-					<FaPlus />
-				</button>
+				<div className='note-add-btn-container'>
+					<button className='note-add-btn' onClick={addNote}>
+						<FaPlus />
+					</button>
+				</div>
 			</div>
 		);
 
-	if (isEditing && selectedElement)
+	if (isEditing && selectedItem)
 		return (
-			<div className='notes-container'>
-				<div className='notes-top-bar'>
-					<button className='notes-top-bar-back-btn' onClick={closeSelectedElement}>
-						<FaChevronLeft />
+			<div className='item-container item-container-editing'>
+				<div className='item-top-bar'>
+					<button className='item-top-bar-back-btn' onClick={closeSelectedItem}>
+						<FaChevronRight />
 					</button>
-					<div className='notes-top-bar-title'>{selectedElement.value}</div>
+					<div className='item-top-bar-title'>{selectedItem.value}</div>
 				</div>
 
-				{selectedElement.notes.length !== 0 ? null : (
+				{selectedItem.notes.length !== 0 ? null : (
 					<>
-						<p className='notes-begin-label'>To add notes to this element, press the "Add Note" button below.</p>
+						<p className='item-begin-label'>To add notes to this element, press the "Add Note" button below.</p>
 					</>
 				)}
 
 				<DragDropContainer className='notes' itemsAreInline={false} onDropItem={onDropNote}>
-					{selectedElement.notes.map((note, index) => (
+					{selectedItem.notes.map((note, index) => (
 						<DragDropItem key={index} index={index} className='note'>
 							<div className='note-title prevent-drag'>
 								<input value={note.title} onChange={(e) => changeTitle(e, index)} placeholder='Title' />
@@ -95,25 +97,27 @@ export const Notes = () => {
 					))}
 				</DragDropContainer>
 
-				<button className='note-add-btn' onClick={addNote}>
-					<FaPlus />
-				</button>
+				<div className='note-add-btn-container'>
+					<button className='note-add-btn' onClick={addNote}>
+						<FaPlus />
+					</button>
+				</div>
 			</div>
 		);
 
-	if (!selectedElement && previousSelectedElement)
+	if (!selectedItem && previousSelectedItem)
 		return (
-			<div className='notes-container notes-container-hide'>
-				<div className='notes-top-bar'>
-					<button className='notes-top-bar-back-btn' onClick={() => {}}>
-						<FaChevronLeft />
+			<div className='item-container item-container-hide'>
+				<div className='item-top-bar'>
+					<button className='item-top-bar-back-btn' onClick={() => {}}>
+						<FaChevronRight />
 					</button>
-					<div className='notes-top-bar-title'>{previousSelectedElement.value}</div>
+					<div className='item-top-bar-title'>{previousSelectedItem.value}</div>
 				</div>
 
-				{previousSelectedElement.notes.length !== 0 ? null : (
+				{previousSelectedItem.notes.length !== 0 ? null : (
 					<>
-						<p className='notes-begin-label'>
+						<p className='item-begin-label'>
 							To add notes to this element, press the "Edit" button on the sidebar and then press the "Add Note" button that contains
 							a plus symbol.
 						</p>
@@ -121,7 +125,7 @@ export const Notes = () => {
 				)}
 
 				<div className='notes'>
-					{previousSelectedElement.notes.map((note, index) => (
+					{previousSelectedItem.notes.map((note, index) => (
 						<div key={index} className='note'>
 							{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
 							<div className='note-text'>
@@ -136,17 +140,17 @@ export const Notes = () => {
 		);
 
 	return (
-		<div className='notes-container'>
-			<div className='notes-top-bar'>
-				<button className='notes-top-bar-back-btn' onClick={closeSelectedElement}>
-					<FaChevronLeft />
+		<div className='item-container'>
+			<div className='item-top-bar'>
+				<button className='item-top-bar-back-btn' onClick={closeSelectedItem}>
+					<FaChevronRight />
 				</button>
-				<div className='notes-top-bar-title'>{selectedElement.value}</div>
+				<div className='item-top-bar-title'>{selectedItem.value}</div>
 			</div>
 
-			{selectedElement.notes.length !== 0 ? null : (
+			{selectedItem.notes.length !== 0 ? null : (
 				<>
-					<p className='notes-begin-label'>
+					<p className='item-begin-label'>
 						To add notes to this element, press the "Edit" button on the sidebar and then press the "Add Note" button that contains a
 						plus symbol.
 					</p>
@@ -154,7 +158,7 @@ export const Notes = () => {
 			)}
 
 			<div className='notes'>
-				{selectedElement.notes.map((note, index) => (
+				{selectedItem.notes.map((note, index) => (
 					<div key={index} className='note'>
 						{note.title.split(" ").join("") === "" ? null : <div className='note-title'>{note.title}</div>}
 						<div className='note-text'>

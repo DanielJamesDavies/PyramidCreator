@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 
 // Context
 import { PyramidContext } from "../../context/PyramidContext";
-import { ElementContext } from "../../context/ElementContext";
+import { ItemContext } from "../../context/ItemContext";
 
 // Styles
 
@@ -15,8 +15,9 @@ import { ElementContext } from "../../context/ElementContext";
 
 export const PyramidLogic = () => {
 	const { pyramid, setPyramid, isEditing } = useContext(PyramidContext);
-	const { selectedElement, changeSelectedElement } = useContext(ElementContext);
+	const { selectedItem, changeSelectedItem } = useContext(ItemContext);
 	const [tierSelected, setTierSelected] = useState(-1);
+	const [tierOver, setTierOver] = useState(0);
 
 	function changeName(e) {
 		setPyramid((oldPyramid) => {
@@ -52,12 +53,13 @@ export const PyramidLogic = () => {
 		});
 	}
 
-	function selectElement(e, tier, index) {
+	function selectItem(e, tier, index) {
 		e.stopPropagation();
-		changeSelectedElement(pyramid.tiers[tier][index], tier, index);
+		if (tier === undefined || index === undefined) return changeSelectedItem(false, 0, 0);
+		changeSelectedItem(pyramid.tiers[tier][index], tier, index);
 	}
 
-	function removeElement(e, tier, index) {
+	function removeItem(e, tier, index) {
 		e.stopPropagation();
 		setPyramid((oldPyramid) => {
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
@@ -70,7 +72,9 @@ export const PyramidLogic = () => {
 		setPyramid((oldPyramid) => {
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
 			var tempItem = newPyramid.tiers[tier].splice(res.source, 1)[0];
-			newPyramid.tiers[tier].splice(res.destination, 0, tempItem);
+			console.log(res.destination, newPyramid.tiers[tierOver].length);
+			if (tier !== tierOver) res.destination = newPyramid.tiers[tierOver].length;
+			newPyramid.tiers[tierOver].splice(res.destination, 0, tempItem);
 			return newPyramid;
 		});
 	}
@@ -88,7 +92,7 @@ export const PyramidLogic = () => {
 	function addTier(e) {
 		e.stopPropagation();
 		setPyramid((oldPyramid) => {
-			if (oldPyramid.tiers.length >= 5) return oldPyramid;
+			if (oldPyramid.tiers.length >= 7) return oldPyramid;
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
 			newPyramid.tiers.push([]);
 			return newPyramid;
@@ -98,13 +102,14 @@ export const PyramidLogic = () => {
 	return {
 		pyramid,
 		isEditing,
-		selectedElement,
+		selectedItem,
 		tierSelected,
+		setTierOver,
 		changeName,
 		onTierClick,
 		changeValue,
-		selectElement,
-		removeElement,
+		selectItem,
+		removeItem,
 		onDropPyramidValueItem,
 		addValue,
 		addTier,

@@ -4,7 +4,7 @@
 import { TopBar } from "./components/TopBar/TopBar";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Pyramid } from "./components/Pyramid/Pyramid";
-import { Notes } from "./components/Notes/Notes";
+import { Item } from "./components/Item/Item";
 
 // Logic
 
@@ -22,7 +22,7 @@ function App() {
 			<Sidebar />
 			<div className='content-container'>
 				<Pyramid />
-				<Notes />
+				<Item />
 			</div>
 		</div>
 	);

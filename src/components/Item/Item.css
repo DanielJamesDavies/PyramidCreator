@@ -1,63 +1,72 @@
-.notes-container {
+.item-container {
 	display: inline-block;
 	margin: 0 auto;
+	margin-top: -50px;
+	padding: 16px 24px;
 
-	width: calc(100%);
-	height: calc(100vh - 40px - 70px);
+	width: calc(40%);
+	height: calc(100vh - 32px);
 	overflow-y: overlay;
 
 	vertical-align: top;
 
-	animation: notes-container-show 1 0.8s;
+	animation: item-container-show 1 0.8s;
 	animation-fill-mode: forwards;
+	background: var(--grey2);
 }
 
-@keyframes notes-container-show {
+@keyframes item-container-show {
 	0% {
 		position: absolute;
 		top: 0px;
 		z-index: 2;
-		left: 100vw;
+		right: -100vw;
 	}
 	99% {
 		position: absolute;
 		top: 0px;
 		z-index: 2;
-		left: 0px;
+		right: 0px;
 	}
 	100% {
-		position: relative;
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		right: 0px;
 	}
 }
 
-.notes-container-hide {
+.item-container-hide {
 	position: absolute;
 	top: 0px;
 	z-index: 2;
-	height: calc(100vh - 40px - 70px);
+	height: calc(100vh - 32px);
 	overflow-y: hidden;
 
-	animation: notes-container-hide 1 0.8s;
+	animation: item-container-hide 1 0.8s;
 	animation-fill-mode: forwards;
 }
 
-@keyframes notes-container-hide {
+@keyframes item-container-hide {
 	0% {
-		left: 0px;
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		right: 0px;
 	}
 	100% {
-		left: 100vw;
+		position: absolute;
+		top: 0px;
+		z-index: 2;
+		right: -100vw;
 	}
 }
 
-.notes-top-bar {
+.item-top-bar {
 	margin: 0 auto;
-
-	width: calc(100% - 40px);
-	max-width: 800px;
 }
 
-.notes-top-bar-back-btn {
+.item-top-bar-back-btn {
 	display: inline-block;
 	margin: 0 4px;
 	border: 0;
@@ -67,6 +76,7 @@
 	height: 40px;
 
 	background: rgba(0, 0, 0, 0);
+	background: var(--grey1);
 	color: #fff;
 	font-size: 1.5rem;
 	vertical-align: middle;
@@ -75,14 +85,14 @@
 	vertical-align: middle;
 }
 
-.notes-top-bar-back-btn:hover {
+.item-top-bar-back-btn:hover {
 	background: var(--blue);
 	color: #fff;
 }
 
-.notes-top-bar-back-btn svg {
+.item-top-bar-back-btn svg {
 	margin: auto;
-	margin-left: -1px;
+	margin-right: -1px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -90,7 +100,7 @@
 	flex-direction: column;
 }
 
-.notes-top-bar-title {
+.item-top-bar-title {
 	display: inline-block;
 	margin-left: 18px;
 
@@ -102,26 +112,23 @@
 
 .notes {
 	margin: 0 auto;
-	margin-top: 40px;
-
-	width: calc(100% - 40px);
-	max-width: 800px;
+	margin-top: 24px;
 }
 
 .note {
 	margin: 10px auto;
-	padding: 12px 24px;
-	border-radius: 4px;
+	padding: 16px 24px;
+	border-radius: 5px;
 
-	width: calc(100% - 40px);
+	width: calc(100% - 48px);
 	text-align: left;
 
-	background: var(--grey2);
+	background: var(--grey1);
 }
 
 .note-title {
 	display: inline-block;
-	margin-top: 1rem;
+	margin-top: 3px;
 
 	width: calc(100% - 38px - 8px);
 
@@ -133,15 +140,19 @@
 	font-size: 1rem;
 }
 
+.note-text p:last-child {
+	margin-bottom: 3px;
+}
+
 .note-title input {
 	display: inline-block;
 	padding: 8px 12px;
-	border: 3px solid var(--grey1);
+	border: 3px solid var(--grey2);
 	border-radius: 8px;
 
 	width: calc(100% - 24px - 6px);
 
-	background: var(--grey1);
+	background: var(--grey2);
 	color: #fff;
 	font-family: sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -191,7 +202,7 @@
 .note-text textarea {
 	margin-top: 12px;
 	padding: 8px 12px;
-	border: 3px solid var(--grey1);
+	border: 3px solid var(--grey2);
 	border-radius: 8px;
 
 	min-width: calc(100% - 24px - 6px);
@@ -200,7 +211,7 @@
 	min-height: 1rem;
 	resize: vertical;
 
-	background: var(--grey1);
+	background: var(--grey2);
 	color: #fff;
 	font-family: sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -213,6 +224,11 @@
 	border-color: var(--blue);
 }
 
+.note-add-btn-container {
+	width: 100%;
+	text-align: center;
+}
+
 .note-add-btn {
 	display: inline-block;
 	margin: 0 4px;
@@ -221,16 +237,16 @@
 	border: 0;
 	border-radius: 100%;
 
-	width: 32px;
-	height: 32px;
+	width: 42px;
+	height: 42px;
 
 	background: rgba(0, 0, 0, 0);
+	background: var(--grey1);
 	color: #fff;
-	font-size: 1.3rem;
-	vertical-align: middle;
+	font-size: 1.4rem;
+	text-align: center;
 	transition: 0.2s;
 	cursor: pointer;
-	vertical-align: middle;
 }
 
 .note-add-btn:hover {
@@ -247,12 +263,9 @@
 	flex-direction: column;
 }
 
-.notes-begin-label {
+.item-begin-label {
 	margin: 0 auto;
-	margin-top: 40px;
-
-	width: calc(100% - 100px);
-	max-width: calc(800px - 100px);
+	margin-top: 24px;
 
 	color: #ddd;
 }
