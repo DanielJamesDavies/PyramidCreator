@@ -10,7 +10,7 @@
 
 	vertical-align: top;
 
-	animation: item-container-show 1 0.8s;
+	animation: item-container-show 1 0.4s ease-out;
 	animation-fill-mode: forwards;
 	background: var(--grey2);
 }
@@ -21,12 +21,6 @@
 		top: 0px;
 		z-index: 2;
 		right: -100vw;
-	}
-	99% {
-		position: absolute;
-		top: 0px;
-		z-index: 2;
-		right: 0px;
 	}
 	100% {
 		position: absolute;

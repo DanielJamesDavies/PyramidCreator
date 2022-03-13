@@ -72,28 +72,24 @@ export const DragDropItemLogic = ({ itemsAreInline }) => {
 		e.preventDefault();
 	}
 
-	function dragEnter(e, draggingItem, order, setOrder, setChangedOrder) {
-		if (draggingItem) {
-			if (e.target.parentNode && e.target.parentNode.classList && e.target.parentNode.classList.contains("drag-drop-item"))
-				return moveOrderItem(
-					draggingItem.props.dragkey,
-					parseInt(e.target.parentNode.getAttribute("drag-key")),
-					order,
-					setOrder,
-					setChangedOrder
-				);
-			if (
-				e.target.parentNode.parentNode &&
-				e.target.parentNode.parentNode.classList &&
-				e.target.parentNode.parentNode.classList.contains("drag-drop-item")
-			)
-				return moveOrderItem(
-					draggingItem.props.dragkey,
-					parseInt(e.target.parentNode.parentNode.getAttribute("drag-key")),
-					order,
-					setOrder,
-					setChangedOrder
-				);
+	function dragEnter(e, draggingItem, setOrder, setChangedOrder) {
+		if (!setOrder || !draggingItem) return;
+
+		if (e.target.parentNode && e.target.parentNode.classList && e.target.parentNode.classList.contains("drag-drop-item")) {
+			return moveOrderItem(draggingItem.props.dragkey, parseInt(e.target.parentNode.getAttribute("drag-key")), setOrder, setChangedOrder);
+		}
+
+		if (
+			e.target.parentNode.parentNode &&
+			e.target.parentNode.parentNode.classList &&
+			e.target.parentNode.parentNode.classList.contains("drag-drop-item")
+		) {
+			return moveOrderItem(
+				draggingItem.props.dragkey,
+				parseInt(e.target.parentNode.parentNode.getAttribute("drag-key")),
+				setOrder,
+				setChangedOrder
+			);
 		}
 	}
 

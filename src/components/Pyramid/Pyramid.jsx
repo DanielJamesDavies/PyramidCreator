@@ -4,6 +4,7 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 // Components
 import { DragDropContainer } from "../DragDropContainer/DragDropContainer";
 import { DragDropItem } from "../DragDropItem/DragDropItem";
+import { PyramidValueInput } from "./PyramidValueInput";
 
 // Logic
 import { PyramidLogic } from "./PyramidLogic";
@@ -12,7 +13,6 @@ import { PyramidLogic } from "./PyramidLogic";
 
 // Styles
 import "./Pyramid.css";
-import { PyramidValueInput } from "./PyramidValueInput";
 
 // Assets
 
@@ -65,7 +65,11 @@ export const Pyramid = () => {
 		);
 
 	return (
-		<div className={!selectedItem ? "pyramid-container" : "pyramid-container pyramid-container-hide"}>
+		<div
+			className={
+				!selectedItem ? "pyramid-container pyramid-container-editing" : "pyramid-container pyramid-container-editing pyramid-container-hide"
+			}
+		>
 			<div className='pyramid-name'>
 				<input value={pyramid.name} onChange={changeName} placeholder='Name' />
 			</div>

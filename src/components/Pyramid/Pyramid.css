@@ -166,6 +166,30 @@
 	border-bottom: var(--tier-height) solid #00d0ff;
 }
 
+.pyramid-tier-add-btn {
+	display: inline-block;
+	margin: 0 8px;
+	margin-top: 32px;
+
+	font-size: 18px;
+	vertical-align: middle;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.pyramid-tier-add-btn:hover {
+	color: var(--blue);
+}
+
+.pyramid-tier-add-btn svg {
+	margin: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .pyramid-tier-values {
 	display: flex;
 	justify-content: center;
@@ -178,49 +202,39 @@
 	z-index: 2;
 
 	width: 100%;
-	height: 120px;
+	height: max-content;
+	max-height: 120px;
+	overflow-y: overlay;
+}
+
+.pyramid-container-editing .pyramid-tier-values {
+	transform: translate(calc(-50% + 35px), -50%);
+	width: calc(100% - 10px - 70px);
+}
+
+.pyramid-tier-values::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background: var(--blue);
+}
+
+.pyramid-tier-values::-webkit-scrollbar {
+	border-radius: 4px;
+	width: 5px;
+	background: var(--grey2);
+	transition: 0.2s;
 }
 
 .pyramid-tier-values .drag-drop-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-
-	height: 120px;
 	vertical-align: middle;
-}
-
-.pyramid-tier-value-add-btn {
-	display: inline-block;
-	margin: 0 8px;
-	margin-top: -8px;
-
-	font-size: 18px;
-	vertical-align: middle;
-	transition: 0.2s;
-	cursor: pointer;
-}
-
-.pyramid-tier-value-add-btn:hover {
-	color: var(--blue);
-}
-
-.pyramid-tier-value-add-btn svg {
-	margin: auto;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
 }
 
 .pyramid-tier-value {
 	position: relative;
 	display: inline-block;
-	margin: 0 24px;
-	padding: 12px 0;
 	flex-grow: 1;
+	margin: 12px 24px;
+	box-sizing: content-box;
+
 	max-width: 145px;
 
 	font-size: 18px;
@@ -231,7 +245,8 @@
 }
 
 .pyramid-tier-value:hover {
-	margin-top: -4px;
+	margin-top: calc(12px - 5px);
+	padding-bottom: 5px;
 	color: #fff;
 }
 
@@ -285,8 +300,7 @@
 }
 
 .pyramid-value-input {
-	margin-top: -8px;
-	padding: 4px;
+	margin: 4px;
 }
 
 .pyramid-value-input input {
@@ -336,10 +350,11 @@
 	flex-direction: column;
 }
 
-.pyramid-tier-add-btn {
+.pyramid-tier-value-add-btn {
 	display: inline-block;
 	margin: 0 8px;
-	margin-top: 32px;
+	margin-top: -4px;
+	margin-right: calc(8px + 24px);
 
 	font-size: 18px;
 	vertical-align: middle;
@@ -347,11 +362,11 @@
 	cursor: pointer;
 }
 
-.pyramid-tier-add-btn:hover {
+.pyramid-tier-value-add-btn:hover {
 	color: var(--blue);
 }
 
-.pyramid-tier-add-btn svg {
+.pyramid-tier-value-add-btn svg {
 	margin: auto;
 	width: 100%;
 	display: flex;

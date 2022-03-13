@@ -69,6 +69,7 @@ export const PyramidLogic = () => {
 	}
 
 	function onDropPyramidValueItem(res, tier) {
+		if (!res) return;
 		setPyramid((oldPyramid) => {
 			var newPyramid = JSON.parse(JSON.stringify(oldPyramid));
 			var tempItem = newPyramid.tiers[tier].splice(res.source, 1)[0];

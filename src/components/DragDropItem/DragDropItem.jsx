@@ -39,13 +39,13 @@ export const DragDropItem = ({
 			<div
 				className='drag-drop-item-drag'
 				onDragOver={(e) => dragOver(e)}
-				onDragEnter={(e) => dragEnter(e, draggingItem, setOrder, setChangedOrder, onDropItem)}
+				onDragEnter={(e) => dragEnter(e, draggingItem, setOrder, setChangedOrder)}
 			></div>
 			<div
 				ref={dragDropItemContent}
 				className='drag-drop-item-content'
 				onDragOver={(e) => dragOver(e)}
-				onDragEnter={(e) => dragEnter(e, draggingItem, setOrder, setChangedOrder, onDropItem)}
+				onDragEnter={(e) => dragEnter(e, draggingItem, setOrder, setChangedOrder)}
 			>
 				{children}
 			</div>
